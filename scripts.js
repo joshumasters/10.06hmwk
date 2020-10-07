@@ -9,9 +9,9 @@ const scoreBoard_div = document.querySelector(".scoreboard");
 
 const result_p = document.querySelector(".result > p");
 
-const rock_div = document.getElementById("R");
-const paper_div = document.getElementById("P");
-const scissors_div = document.getElementById("S");
+const rock_div = document.getElementById("r");
+const paper_div = document.getElementById("p");
+const scissors_div = document.getElementById("s");
 
 function getComputerChoice(){
     const choices = ['r', 'p', 's'];
@@ -31,6 +31,7 @@ function wins(user, computer){
     compScore_span.innerHTML = compScore;
     result_p.innerHTML = convertToWord(user) + " beats " + convertToWord(computer) + ". You Win!"
     document.getElementById(user).classList.add('green-glow');
+    setTimeout(function() {document.getElementById(user).classList.remove('green-glow');}, 600)
 }
 
 
@@ -39,10 +40,13 @@ function lose(user, computer){
     userScore_span.innerHTML = userScore;
     compScore_span.innerHTML = compScore;
     result_p.innerHTML = convertToWord(computer) + " beats " + convertToWord(user) + ". You Lose!"
-
+    document.getElementById(user).classList.add('red-glow');
+    setTimeout(function() {document.getElementById(user).classList.remove('red-glow');}, 600)
 }
 function draw(user, computer){
     result_p.innerHTML = "Its a Draw!"
+    document.getElementById(user).classList.add('gray-glow');
+    setTimeout(function() {document.getElementById(user).classList.remove('gray-glow');}, 600)
 }
 
 
